@@ -38,3 +38,19 @@ input.addEventListener("keydown", function(event) {
     }
 
 });
+const emojiButton = document.getElementById("emojiButton");
+const emojiPicker = document.getElementById("emojiPicker");
+
+emojiButton.addEventListener("click", function () {
+
+    if (emojiPicker.style.display === "block") {
+
+        emojiPicker.style.display = "none";
+
+    } else {
+
+        emojiPicker.style.display = "block";
+
+    }
+
+});
