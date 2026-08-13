@@ -67,3 +67,43 @@ emojiPicker.addEventListener("click", function(event) {
     }
 
 });
+const fileButton = document.getElementById("fileButton");
+const fileInput = document.getElementById("fileInput");
+
+fileButton.addEventListener("click", function () {
+    fileInput.click();
+});
+fileInput.addEventListener("change", function () {
+
+    const file = fileInput.files[0];
+
+    if (!file) {
+        return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function (event) {
+
+        const message = document.createElement("div");
+
+        message.className = "message sent";
+
+        message.innerHTML = `
+            <img
+                src="${event.target.result}"
+                class="chat-image">
+
+            <small>
+                Baru saja ✓
+            </small>
+        `;
+
+        messages.appendChild(message);
+
+        messages.scrollTop = messages.scrollHeight;
+    };
+
+    reader.readAsDataURL(file);
+
+});
