@@ -107,3 +107,108 @@ fileInput.addEventListener("change", function () {
     reader.readAsDataURL(file);
 
 });
+const chatItems = document.querySelectorAll(".chat");
+
+const chatName = document.querySelector(".chat-header strong");
+
+const messages = document.querySelector(".messages");
+
+
+const chatData = {
+
+    Andi: [
+        {
+            text: "Halo 👋",
+            type: "received",
+            time: "08:30"
+        },
+        {
+            text: "Hai! Apa kabar?",
+            type: "sent",
+            time: "08:31 ✓✓"
+        },
+        {
+            text: "Aku baik 👍",
+            type: "received",
+            time: "08:31"
+        }
+    ],
+
+    Siti: [
+        {
+            text: "Halo!",
+            type: "received",
+            time: "08:20"
+        },
+        {
+            text: "Besok jadi pergi?",
+            type: "received",
+            time: "08:21"
+        }
+    ],
+
+    Budi: [
+        {
+            text: "Bro!",
+            type: "received",
+            time: "07:50"
+        },
+        {
+            text: "Oke 👍",
+            type: "sent",
+            time: "07:51 ✓✓"
+        }
+    ]
+
+};
+
+
+function loadChat(name) {
+
+    messages.innerHTML = "";
+
+    chatData[name].forEach(function(message) {
+
+        const messageElement =
+            document.createElement("div");
+
+        messageElement.className =
+            "message " + message.type;
+
+        messageElement.innerHTML = `
+            ${message.text}
+
+            <small>
+                ${message.time}
+            </small>
+        `;
+
+        messages.appendChild(messageElement);
+
+    });
+
+}
+
+
+chatItems.forEach(function(chat) {
+
+    chat.addEventListener("click", function() {
+
+        chatItems.forEach(function(item) {
+
+            item.classList.remove("active");
+
+        });
+
+        chat.classList.add("active");
+
+        const name =
+            chat.getAttribute("data-name");
+
+        chatName.textContent = name;
+
+        loadChat(name);
+
+    });
+
+});
