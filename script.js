@@ -54,3 +54,16 @@ emojiButton.addEventListener("click", function () {
     }
 
 });
+emojiPicker.addEventListener("click", function(event) {
+
+    const emoji = event.target.textContent.trim();
+
+    if (emoji !== "") {
+
+        input.value += emoji;
+
+        input.focus();
+
+    }
+
+});
