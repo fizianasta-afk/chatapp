@@ -295,3 +295,18 @@ button {
 
     z-index: 100;
 }
+.chat-image {
+    display: block;
+
+    max-width: 280px;
+    max-height: 300px;
+
+    width: auto;
+    height: auto;
+
+    border-radius: 8px;
+
+    object-fit: cover;
+
+    margin-bottom: 5px;
+}
