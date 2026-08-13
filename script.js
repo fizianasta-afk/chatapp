@@ -1,9 +1,6 @@
 const input = document.querySelector(".message-box input");
-
 const messages = document.querySelector(".messages");
-
-const sendButton = document.querySelector("#sendButton");
-
+const sendButton = document.getElementById("sendButton");
 
 function sendMessage() {
 
@@ -17,12 +14,13 @@ function sendMessage() {
 
     message.className = "message sent";
 
-    message.innerHTML = `
-        ${text}
-        <small>
-            Baru saja ✓
-        </small>
-    `;
+    message.textContent = text;
+
+    const time = document.createElement("small");
+
+    time.textContent = "Baru saja ✓";
+
+    message.appendChild(time);
 
     messages.appendChild(message);
 
@@ -31,16 +29,12 @@ function sendMessage() {
     messages.scrollTop = messages.scrollHeight;
 }
 
-
-sendButton.addEventListener("click", sendMessage);
-
+sendButton.onclick = sendMessage;
 
 input.addEventListener("keydown", function(event) {
 
     if (event.key === "Enter") {
-
         sendMessage();
-
     }
 
 });
